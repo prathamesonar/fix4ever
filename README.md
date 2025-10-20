@@ -5,8 +5,8 @@ Fix4Ever is a prototype for a real-time, multi-vendor service marketplace where 
 
 ##  Live Demo
 
-* **Frontend (Vercel):** [https://book-review-sand.vercel.app/](https://.vercel.app/)
-* **Backend (Render):** [https://book-review-backend-5kr1.onrender.com/](http/)
+* **Frontend (Vercel):** [https://fix4ever.vercel.app](https://fix4ever.vercel.app)
+* **Backend (Render):** [https://fix4ever-backend-cmmf.onrender.com/](https://fix4ever-backend-cmmf.onrender.com)
 
 ---
 ##  Screenshots
