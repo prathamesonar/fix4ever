@@ -2,29 +2,6 @@
 
 Fix4Ever is a prototype for a real-time, multi-vendor service marketplace where users can book and track repair technicians for home/electronic services. This project was developed as a full-stack challenge to demonstrate capabilities across frontend, backend, database integration, and basic AI automation.
 
-## Table of Contents
-
-- [Description](#description)
-- [Key Features](#key-features)
-  - [User Features](#user-features)
-  - [Technician Features](#technician-features)
-  - [Admin Features](#admin-features)
-  - [General Features](#general-features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Setup and Installation](#setup-and-installation)
-- [Environment Variables](#environment-variables)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Live Demo](#live-demo)
-- [Author](#author)
-
-## Description
-
-This application simulates a service marketplace allowing users to submit requests for repairs. Technicians can view and accept available jobs based on category, update job statuses, and manage their profiles. An admin panel provides an overview of users and requests, along with basic management capabilities. The system also includes an AI feature to suggest request details based on the user's description.
-
-## Key Features
-
 ### User Features
 
 -   **Authentication:** Register and log in as a User.
@@ -92,38 +69,36 @@ This application simulates a service marketplace allowing users to submit reques
 ## Project Structure
 
 ```
-
-.
 ├── backend/
-│   ├── controllers/      \# Handles request logic (auth, requests, admin, AI, technicians)
-│   ├── middleware/       \# Custom middleware (e.g., auth checks)
-│   ├── models/           \# Mongoose schemas (User, ServiceRequest)
-│   ├── routes/           \# Express route definitions
-│   ├── utils/            \# Utility functions (e.g., generateToken)
-│   ├── .env              \# Environment variables (DB connection, secrets, API keys) - \!\!\! DO NOT COMMIT \!\!\!
+│   ├── controllers/     
+│   ├── middleware/       
+│   ├── models/           
+│   ├── routes/           
+│   ├── utils/            
+│   ├── .env               
 │   ├── .gitignore
-│   ├── index.js          \# Main backend server entry point
+│   ├── index.js          
 │   ├── package.json
 │   └── package-lock.json
 ├── frontend/
-│   ├── public/           \# Static assets
+│   ├── public/           
 │   ├── src/
-│   │   ├── components/   \# Reusable React components (Header, Footer, PrivateRoute, etc.)
-│   │   ├── context/      \# React Context for global state (AuthContext)
-│   │   ├── pages/        \# Page-level components corresponding to routes
-│   │   ├── services/     \# API service configuration (Axios instance)
-│   │   ├── App.jsx       \# Main application component with routing
-│   │   ├── index.css     \# Tailwind CSS entry point
-│   │   └── main.jsx      \# Frontend application entry point
+│   │   ├── components/   
+│   │   ├── context/      
+│   │   ├── pages/        
+│   │   ├── services/     
+│   │   ├── App.jsx       
+│   │   ├── index.css     
+│   │   └── main.jsx      
 │   ├── .gitignore
-│   ├── index.html        \# Main HTML file
-│   ├── jsconfig.json     \# JS project configuration (for VS Code paths)
+│   ├── index.html        
+│   ├── jsconfig.json     
 │   ├── package.json
 │   ├── package-lock.json
-│   ├── postcss.config.js \# PostCSS configuration (for Tailwind/Autoprefixer)
-│   ├── tailwind.config.js\# Tailwind CSS configuration
-│   └── vite.config.js    \# Vite build tool configuration
-└── README.md             \# This file
+│   ├── postcss.config.js 
+│   ├── tailwind.config.js
+│   └── vite.config.js    
+└── README.md             
 
 ````
 
@@ -131,8 +106,8 @@ This application simulates a service marketplace allowing users to submit reques
 
 1.  **Clone the Repository:**
     ```bash
-    git clone <your-repository-url>
-    cd <repository-folder>
+    git clone https://github.com/prathamesonar/fix4ever.git
+    cd fix4ever
     ```
 
 2.  **Backend Setup:**
@@ -144,17 +119,17 @@ This application simulates a service marketplace allowing users to submit reques
         ```bash
         npm install
         ```
-    * Create a `.env` file in the `backend` directory. Copy the contents of `.env.example` (if provided) or add the necessary variables (see [Environment Variables](#environment-variables) section below).
+    * Create a `.env` file in the `backend` directory. Copy the contents of `.env.example`  or add the necessary variables ( [Environment Variables](#environment-variables) section ).
     * Run the backend server:
         ```bash
         npm run dev
         ```
-        The server should start, typically on port 5001, and attempt to connect to MongoDB.
+        The server should start on port 5001.
 
 3.  **Frontend Setup:**
     * Open a **new terminal** and navigate to the frontend directory:
         ```bash
-        cd ../frontend
+        cd frontend
         ```
     * Install dependencies:
         ```bash
@@ -164,7 +139,7 @@ This application simulates a service marketplace allowing users to submit reques
         ```bash
         npm run dev
         ```
-        Vite will start the development server, usually on port 5173.
+        the development server will start on port 5173.
 
 4.  **Access the Application:** Open your web browser and navigate to `http://localhost:5173`.
 
@@ -173,42 +148,15 @@ This application simulates a service marketplace allowing users to submit reques
 Create a `.env` file in the `backend` directory with the following variables:
 
 ```dotenv
-# Port for the backend server (default is 5001)
+
 PORT=5001
+MONGO_URI=
+JWT_SECRET=
+SARVAM_API_KEY=
 
-# MongoDB Connection String (replace with your Atlas connection string)
-MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/<database-name>?retryWrites=true&w=majority
-
-# Secret key for signing JWT tokens (choose a long, random string)
-JWT_SECRET=your_super_secret_jwt_key_here
-
-# API Key for Sarvam AI (obtain from Sarvam AI)
-SARVAM_API_KEY=sk_your_sarvam_api_key_here
-
-# Credentials for the special Admin login
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=your_secure_admin_password
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
 ````
-
-**Notes:**
-
-  * **MONGO\_URI:** Get this from your MongoDB Atlas cluster connection details.
-  * **JWT\_SECRET:** Create a strong, random secret key.
-  * **SARVAM\_API\_KEY:** Obtain this key from the Sarvam AI platform.
-  * **ADMIN\_EMAIL / ADMIN\_PASSWORD:** Set the desired credentials for the special admin login. **Ensure a user with this email and `role: "Admin"` exists in your MongoDB database.**
-  * **Security:** Ensure the `.env` file is listed in your `.gitignore` file and never commit it to version control.
-
-## Usage
-
-1.  **Register:** Navigate to `/register` to create a 'User' or 'Technician' account.
-2.  **Login:** Navigate to `/login` to log in.
-      * **Normal Users/Technicians:** Enter registered email/password.
-      * **Admin:** Enter the `ADMIN_EMAIL` and `ADMIN_PASSWORD` from the `.env` file and **check the "Login as Admin (Special)" box**.
-3.  **Explore:**
-      * **Users:** Create requests from `/new-request`, view status on `/dashboard`.
-      * **Technicians:** View/accept jobs on `/tech-dashboard`.
-      * **Admin:** Access the admin panel via `/admin`.
-      * Access Settings and History via header links (if applicable to the role).
 
 ## Screenshots
 
