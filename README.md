@@ -69,7 +69,7 @@ Fix4Ever is a prototype for a real-time, multi-vendor service marketplace where 
 -   **Database:** MongoDB (Mongoose ODM)
 -   **Authentication:** JWT (jsonwebtoken), bcryptjs
 -   **AI Integration:** Sarvam AI API (via Axios)
--   
+   
 ---
 
 ## Project Structure
@@ -165,4 +165,57 @@ SARVAM_API_KEY=api_key
 ADMIN_EMAIL=
 ADMIN_PASSWORD=
 ````
+---
 
+## API Endpoints
+
+All endpoints are prefixed with `/api`.
+
+### Authentication (`/api/auth`)
+
+-   `POST /register` : Register a new User or Technician.
+-   `POST /login` : Authenticate a User, Technician, or special Admin.
+-   `PUT /changepassword` : (Protected) Change the logged-in user's password.
+-   `DELETE /deleteaccount` : (Protected) Delete the logged-in user's account.
+-   `PUT /profile` : (Protected, Technician Only) Update the logged-in technician's profile details.
+-   `PUT /availability` : (Protected, Technician Only) Toggle the logged-in technician's availability status.
+
+---
+
+### Service Requests (`/api/requests`)
+
+-   `POST /` : (Protected) Create a new service request.
+-   `GET /myrequests` : (Protected) Get all service requests for the logged-in user.
+-   `GET /available` : (Protected, Technician Only) Get pending service requests available for technicians .
+-   `GET /myjobs` : (Protected, Technician Only) Get jobs assigned to or completed by the logged-in technician.
+-   `GET /history` : (Protected) Get completed/cancelled service requests for the logged-in user or technician.
+-   `PUT /:id/cancel` : (Protected) Cancel a specific service request.
+-   `PUT /:id/assign` : (Protected, Technician Only) Assign a specific pending request to the logged-in technician.
+-   `PUT /:id/status` : (Protected, Technician Only) Update the status of an assigned request .
+-   `POST /:id/review` : (Protected) Submit a rating and review for a completed service request.
+
+---
+
+### AI Suggestions (`/api/ai`)
+
+-   `POST /suggest` : (Protected) Get AI suggestions (category, duration, price, urgency) based on a provided description.
+
+---
+
+### Admin (`/api/admin`)
+
+
+-   `GET /stats` : (Protected, Admin Only) Get dashboard statistics (user counts, request counts, top technicians).
+-   `GET /users` : (Protected, Admin Only) Get a list of all users.
+-   `GET /requests` : (Protected, Admin Only) Get a list of all service requests.
+-   `DELETE /users/:id` : (Protected, Admin Only) Delete a specific user by ID.
+-   `DELETE /requests/:id` : (Protected, Admin Only) Delete a specific service request by ID.
+
+---
+
+### Technicians (`/api/technicians`)
+
+-   `GET /available` : (Protected) Get a list of available technicians .
+-   `GET /:id/profile` : (Protected) Get the public profile details of a specific technician.
+
+---
