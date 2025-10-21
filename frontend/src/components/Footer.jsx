@@ -17,7 +17,7 @@ const Footer = () => {
                         rel="noopener noreferrer"  
                         className="text-blue-600 hover:underline"
                     >
-                        prathamesonar  
+                        Prathamesh Sonar 
                     </a>
                 </p>
              </div>
